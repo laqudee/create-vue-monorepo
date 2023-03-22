@@ -3,4 +3,4 @@ import { createEncrypter } from './encrypt/common.js'
 import * as validator from './validator/common.js'
 import * as domSetting from './dom/common.js'
 
-export { createAxios, createEncrypter, formater, validator, domSetting }
+export { createAxios, createEncrypter, validator, domSetting }
