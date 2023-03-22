@@ -1,0 +1,40 @@
+{
+  "name": "create-vue-monorepo",
+  "version": "1.0.0",
+  "description": "An easy way to start a pnpm monorepo project about Vue",
+  "bin": {
+    "create-vue-monorepo": "outfile.cjs"
+  },
+  "files": [
+    "outfile.cjs",
+    "template"
+  ],
+  "engines": {
+    "node": "^14.18.0 || >=16.0.0"
+  },
+  "scripts": {
+    "format": "prettier --write .",
+    "build": "zx ./scripts/build.mjs"
+  },
+  "keywords": [],
+  "author": "Laqudee Des",
+  "license": "ISC",
+  "devDependencies": {
+    "@vue/create-eslint-config": "^0.2.0",
+    "esbuild": "^0.16.14",
+    "esbuild-plugin-license": "^1.2.2",
+    "husky": "^8.0.3",
+    "kolorist": "^1.7.0",
+    "lint-staged": "^13.1.2",
+    "minimist": "^1.2.8",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.4",
+    "prompts": "^2.4.2",
+    "zx": "^4.3.0"
+  },
+  "lint-staged": {
+    "*.{js,vue,json}": [
+      "prettier --write"
+    ]
+  }
+}
