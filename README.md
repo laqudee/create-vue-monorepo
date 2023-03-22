@@ -15,6 +15,8 @@ pnpm add create-vue-monorepo --global
 create-vue-monorepo
 ```
 
+![演示](./media/it-work.png)
+
 
 ## 构建
 
@@ -25,9 +27,8 @@ create-vue-monorepo
   - vite.config.js
   - vitest.config.js
   - pnpm-workspace.yaml
-  - 等
 - 渲染package.json
 
 ### 舍弃
-
-- 暂时不要生成的README。改为统一提供
+- 暂时不要生成的定制化README改为统一提供
+- 暂不考虑TypeScript
