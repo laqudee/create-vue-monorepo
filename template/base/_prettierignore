@@ -1,0 +1,9 @@
+# Ignore artifacts:
+build
+target
+iconfont
+font
+images
+scripts
+
+# Ignore all HTML files:
