@@ -3854,7 +3854,7 @@ Scaffolding project in ${root}...`);
   console.log(`
 Done. Now run:
 `);
-  console.log(`${bold(green(`Please use pnpm as the package management tool for the workspace project`))}`);
+  console.log(`  ${bold(green(`Please use pnpm as the package management tool for the workspace project`))}`);
   if (root !== cwd) {
     const cdProjectName = path4.relative(cwd, root);
     console.log(

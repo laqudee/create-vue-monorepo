@@ -258,7 +258,7 @@ async function init() {
 
 
   console.log(`\nDone. Now run:\n`)
-  console.log(`${bold(green(`Please use pnpm as the package management tool for the workspace project`))}`)
+  console.log(`  ${bold(green(`Please use pnpm as the package management tool for the workspace project`))}`)
   if (root !== cwd) {
     const cdProjectName = path.relative(cwd, root)
     console.log(
