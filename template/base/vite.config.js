@@ -35,7 +35,8 @@ export async function createViteConfig(projectName, command) {
     ],
     resolve: {
       alias: {
-        '@portal': fileURLToPath(new URL('./packages/portal/src', import.meta.url))
+        // 根据具体的业务项目进行设置路径别名
+        // '@one': fileURLToPath(new URL('./packages/vue-one/src', import.meta.url))
       }
     },
     build: {
