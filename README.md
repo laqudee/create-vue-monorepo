@@ -11,8 +11,8 @@
 pnpm add create-vue-monorepo --global
 ```
 
-# 在要建项目的目录下
 ```shell
+# 在要建项目的目录下
 create-vue-monorepo
 ```
 
