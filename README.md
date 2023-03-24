@@ -9,9 +9,10 @@
 ```shell
 # 全局安装
 pnpm add create-vue-monorepo --global
+```
 
-# 在要建项目的目录下
 ```shell
+# 在要建项目的目录下
 create-vue-monorepo
 ```
 
@@ -29,7 +30,7 @@ create-vue-monorepo
   - pnpm-workspace.yaml
 - 渲染package.json
 
-### 舍弃
+## 舍弃
 - 暂时不要生成的定制化README改为统一提供
 - 暂不考虑TypeScript
 
