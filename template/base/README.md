@@ -37,7 +37,7 @@
 
 | 项目名称       | 说明                                                                         |
 | :------------- | :--------------------------------------------------------------------------- |
-| common-comps   | 存放可以抽离的共用组件，有意做成类 vueuse 方式                               |
+| common-components   | 存放可以抽离的共用组件，有意做成类 vueuse 方式                               |
 | common-toolbox | 存放供组件库和业务项目使用的公共方法和函数，目标：后期可以抽离成单独的工具库 |
 | vue-demo-xx         | 业务项目代码                                                       |
 | ......         | 后期可以直接添加门户相关的其他业务项目                                       |
@@ -130,15 +130,14 @@ $ colorette
 
 ## 创建新VUE业务项目的指南
 
+> 优先推荐作者写的CLI工具包 [`vue-establish`](https://github.com/laqudee/vue-establish)，`vue-establish create <project-name>`直接生成符合要求的Vue业务项目基本框架
+
 ### [简单的指南](./CREATE-NEW-VUE-PROJECT-README.md)
 
 > 后期计划
 
 - [x] 完善`Vitest`单元测试体系与命令
 - [x] 完善`Eslint` + `Prettier`的代码格式修正与检查
-- [ ] 加入`TypeScript`的可行性...
-
-- 未完待续...
 
 ## 自适应设置案例
 

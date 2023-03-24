@@ -8,7 +8,7 @@ import { stringify } from 'qs'
  * @descriptor 需要校验options中的选项
  * @param {string} baseURL
  * @param {number} timeout
- * @param {function} getAccessToken
+ * @param {function} getToken
  * @param {RouterType} router
  */
 export function createAxios(options = {}) {
@@ -18,10 +18,10 @@ export function createAxios(options = {}) {
   })
 
   instance.interceptors.request.use((config) => {
-    const accessToken = options.getAccessToken()
+    const token = options.getToken()
 
-    if (accessToken) {
-      config.headers.accessToken = accessToken
+    if (token) {
+      config.headers.token = token
     }
 
     if (config.headers['content-type'] === 'application/x-www-form-urlencoded') {

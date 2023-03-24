@@ -32,3 +32,21 @@ create-vue-monorepo
 ### 舍弃
 - 暂时不要生成的定制化README改为统一提供
 - 暂不考虑TypeScript
+
+## 创建`packages`目录下业务项目的方式
+
+- 优先推荐作者构建的 `vue-establish` cli工具包
+
+- [CLI工具包github地址](https://github.com/laqudee/vue-establish)
+
+- 安装
+
+```shell
+pnpm add vue-establish --global
+```
+
+- 使用
+
+```shell
+vue-establish create <vue-project-name>
+```
