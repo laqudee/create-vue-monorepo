@@ -16,7 +16,7 @@ pnpm add create-vue-monorepo --global
 create-vue-monorepo
 ```
 
-![演示](./media/it-work.png)
+![演示](https://github.com/laqudee/create-vue-monorepo/blob/master/media/it-work.png)
 
 
 ## 构建
