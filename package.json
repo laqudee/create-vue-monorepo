@@ -1,6 +1,6 @@
 {
   "name": "create-vue-monorepo",
-  "version": "1.0.0",
+  "version": "0.0.1-beta.1",
   "description": "An easy way to start a pnpm monorepo project about Vue",
   "bin": {
     "create-vue-monorepo": "outfile.cjs"
@@ -16,9 +16,14 @@
     "format": "prettier --write .",
     "build": "zx ./scripts/build.mjs"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laqudee/create-vue-monorepo.git"
+  },
   "keywords": [],
   "author": "Laqudee Des",
-  "license": "ISC",
+  "license": "MIT",
+  "homepage": "https://github.com/laqudee/create-vue-monorepo#readme",
   "devDependencies": {
     "@vue/create-eslint-config": "^0.2.0",
     "esbuild": "^0.16.14",
