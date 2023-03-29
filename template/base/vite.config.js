@@ -27,10 +27,10 @@ export async function createViteConfig(projectName, command) {
     plugins: [
       vue(),
       AutoImport({
-        resolvers: [ElementPlusResolver(), VantResolver]
+        resolvers: [ElementPlusResolver(), VantResolver()]
       }),
       Components({
-        resolvers: [ElementPlusResolver(), VantResolver]
+        resolvers: [ElementPlusResolver(), VantResolver()]
       })
     ],
     resolve: {
