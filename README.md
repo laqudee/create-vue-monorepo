@@ -36,9 +36,9 @@ create-vue-monorepo
 
 ## 创建`packages`目录下业务项目的方式
 
-- 优先推荐作者构建的 `vue-establish` cli工具包
+- 优先推荐作者构建的 `create-vue-business` cli工具包
 
-- [CLI工具包github地址](https://github.com/laqudee/vue-establish)
+- [CLI工具包github地址](https://github.com/laqudee/create-vue-business)
 
 - 安装
 
@@ -49,5 +49,10 @@ pnpm add vue-establish --global
 - 使用
 
 ```shell
-vue-establish create <vue-project-name>
+create-vue-business
 ```
+
+![演示before](https://github.com/laqudee/create-vue-business/blob/main/media/before-business.png)
+
+
+![演示after](https://github.com/laqudee/create-vue-business/blob/main/media/after-business.png)
