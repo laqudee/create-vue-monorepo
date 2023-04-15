@@ -28,7 +28,13 @@ export const run = async (arg, options) => {
     if (!(await hasProject(arg))) {
       throw new Error(`'${arg}' is not a business project or business project not found`)
     }
-    await execa(options.command, [options.order, `packages/${arg}`, ...execaArgs], { stdio: 'inherit' })
+    const viteConfigPath = `./packages/${arg}/vite.config.js`
+    if (isFileExist(viteConfigPath)) {
+      // 如果业务项目中包含vite.config.js则使用之【主要为了兼容Vue2的业务】
+      await execa(options.command, [options.order, `packages/${arg}`, '--config', `packages/${arg}/vite.config.js`], { stdio: 'inherit' })
+    } else {
+      await execa(options.command, [options.order, `packages/${arg}`, ...execaArgs], { stdio: 'inherit' })
+    }
   } catch (err) {
     console.error(err)
   }
