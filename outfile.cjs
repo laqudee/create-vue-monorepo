@@ -1,4 +1,4 @@
-/*! create-vue-monorepo v0.0.2 | MIT */
+/*! create-vue-monorepo v0.0.3 | MIT */
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
