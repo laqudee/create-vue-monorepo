@@ -126,7 +126,7 @@ $ colorette
 | :--------- | :----------- | :------------------------------------------------------------------------------------- |
 | `packages` | `common-`    | `packages`工作空间中以`common-`开头的项目（目录）均表示公共的模块，不是业务项目        |
 | 业务项目   | `server.js`  | 在业务项目根目录中定义`server.js`，该文件中定义`vite.config.js`可能用到的`server`选项  |
-| 业务项目   | `setting.js` | 在业务项目根目录中定义`setting.js`，该文件中定义`vite.config.js`可能用到的其他选项配置 |
+| 业务项目   | `viteCustomConfig.js` | 在业务项目根目录中定义`viteCustomConfig.js`，该文件中定义`vite.config.js`可能用到的其他选项配置 |
 
 ## 创建新VUE业务项目的指南
 
@@ -158,7 +158,7 @@ pnpm add postcss-plugin-px2rem
 import px2rem from 'postcss-plugin-px2rem'
 
 export default defineConfig(async ({ command, mode }) => {
-  const px2remOptions = await import(`./packages/${projectName}/setting.js`).then(
+  const px2remOptions = await import(`./packages/${projectName}/viteCustomConfig.js`).then(
     (module) => module.px2remOptions
   )
 
@@ -174,7 +174,7 @@ export default defineConfig(async ({ command, mode }) => {
 
 ```js
 // 在packages/vue-demo-xx项目根目录
-// 添加 setting.js
+// 添加 viteCustomConfig.js
 export const px2remOptions = {
   rootValue: 16,
   unitPrecision: 5,
@@ -279,10 +279,12 @@ export const createVscodeViteAutoConfig = async () => {
 - [x] ~~启用`Eslint`检查~~
 - [x] ~~修复`VS Code`编辑器插件`Vite`自启动，启动服务器失败 BUG~~
 - [x] ~~完善vitest单元测试脚本~~
-- [x] ~~修复vite.config.js中，默认查找`server.js`与`setting.js`的bug，尽管一个正常的业务项目都会配置这些，但很难保证用户不会另辟蹊径！~~
+- [x] ~~修复vite.config.js中，默认查找`server.js`与`viteCustomConfig.js`的bug，尽管一个正常的业务项目都会配置这些，但很难保证用户不会另辟蹊径！~~
 - [ ] **pnpm 下载依赖 到指定目录研究**【待解决】
 - [ ] _不同项目或库使用统一脚本入口执行打包的可行性 【待研究】_
 - [ ] 一个业务项目有server.js一个项目没有server.js，启动有问题
+- [ ] 在esm项目中使用cjs包的问题
+  - 考虑使用`import commonjs from '@rollup/plugin-commonjs'`将cjs包转为esm模式来使用
 
 ## 引入`TypeScript`的可行性
 
