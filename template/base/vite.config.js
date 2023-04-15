@@ -4,8 +4,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver, VantResolver } from 'unplugin-vue-components/resolvers'
-import vue from '@vitejs/plugin-vue'
+
 import px2rem from 'postcss-plugin-px2rem'
 import { matchViteArgv, createVscodeViteAutoConfig, importViteOptions } from './scripts/utils'
 
@@ -20,18 +19,19 @@ if (!matchViteArgv(args)) {
 }
 
 export async function createViteConfig(projectName, command) {
-  const { px2remOptions, devServer } = await importViteOptions(projectName, command)
+  const {customPlugins, px2remOptions, devServer } = await importViteOptions(projectName, command)
   
   return defineConfig({
     root: `./packages/${projectName}/`,
     plugins: [
-      vue(),
+      customPlugins.vueTag,
       AutoImport({
-        resolvers: [ElementPlusResolver(), VantResolver()]
+        resolvers: [...customPlugins.resolvers]
       }),
       Components({
-        resolvers: [ElementPlusResolver(), VantResolver()]
-      })
+        resolvers: [...customPlugins.resolvers]
+      }),
+      ...customPlugins.otherPlugins,
     ],
     resolve: {
       alias: {

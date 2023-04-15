@@ -104,14 +104,15 @@ export const isFileExist = (path) => {
 export const importViteOptions = async(projectName, command = '') => {
   let px2remOptions = {}
   let devServer = {}
-  const settingPath = `./packages/${projectName}/setting.js`
+  const settingPath = `./packages/${projectName}/viteCustomConfig.js`
   const serverPath = `./packages/${projectName}/server.js`
   if (isFileExist(settingPath)) {
     px2remOptions = await import(settingPath).then((module) => module.px2remOptions)
+    customPlugins = await import(settingPath).then((module) => module.plugins)
   }
   if (command === 'serve' && isFileExist(serverPath)) {
     devServer = await import(serverPath).then((module) => module.default)
   }
 
-  return {px2remOptions, devServer}
+  return {customPlugins, px2remOptions, devServer}
 }
