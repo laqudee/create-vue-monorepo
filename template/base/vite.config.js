@@ -31,7 +31,7 @@ export async function createViteConfig(projectName, command) {
       Components({
         resolvers: [...customPlugins.resolvers]
       }),
-      ...customPlugins.otherPlugins,
+      ...customPlugins.othersPlugins,
     ],
     resolve: {
       alias: {

@@ -103,6 +103,7 @@ export const isFileExist = (path) => {
 
 export const importViteOptions = async(projectName, command = '') => {
   let px2remOptions = {}
+  let customPlugins = {}
   let devServer = {}
   const settingPath = `./packages/${projectName}/viteCustomConfig.js`
   const serverPath = `./packages/${projectName}/server.js`
