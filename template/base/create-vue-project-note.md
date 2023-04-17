@@ -2,22 +2,22 @@
 
 ## 优先推荐
 
-> 优先推荐作者构建的 `vue-establish` cli工具包
+> 优先推荐作者构建的 `create-vue-business` cli工具包
 
 ### 安装与使用
 
-- [CLI工具包github地址](https://github.com/laqudee/vue-establish)
+- [CLI工具包github地址](https://github.com/laqudee/create-vue-business)
 
 - 安装
 
 ```shell
-pnpm add vue-establish --global
+pnpm add create-vue-business --global
 ```
 
 - 使用
 
 ```shell
-vue-establish create <vue-project-name>
+create-vue-business
 ```
 
 ## 其他方式说明
