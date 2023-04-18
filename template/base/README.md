@@ -119,7 +119,7 @@ $ colorette
 │  │
 │  ├─common-toolbox       # 公共工具存放目录
 │  │
-│  └─vue-demo-xx               # 业务项目
+│  └─business-xx               # 业务项目
 │
 └─scripts                 # 脚本相关目录
         build.js          # 业务项目构建相关，例如 pnpm build business-xx
@@ -127,7 +127,7 @@ $ colorette
         preview.js        # 预览构建完成的包，例如 pnpm preview business-xx
         utils.js          # 脚本相关工具库
 └─target                  # 构建完成的包存放目录
-    └─vue-demo-xx              # business-xx业务项目包存放目录
+    └─business-xx              # business-xx业务项目包存放目录
 ```
 
 ## 项目目录名称规范
