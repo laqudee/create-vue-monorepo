@@ -1,5 +1,5 @@
 {
-  "name": "common-toolbox",
+  "name": "common-library",
   "version": "1.0.0",
   "description": "",
   "module": "src/index.js",
@@ -18,6 +18,7 @@
     "jsencrypt": "^3.2.1",
     "qs": "^6.10.5",
     "rollup": "^3.18.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "common-toolbox": "^0.0.9"
   }
 }

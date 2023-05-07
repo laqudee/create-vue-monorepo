@@ -3,7 +3,7 @@ import { fileURLToPath, URL } from 'node:url'
 import fs from 'node:fs'
 import { execa } from 'execa'
 import inquirer from 'inquirer'
-import { magentaBright, bold } from "colorette"
+import { magentaBright, bold } from 'colorette'
 
 const execaArgs = ['--config', 'vite.config.js']
 
@@ -31,9 +31,15 @@ export const run = async (arg, options) => {
     const viteConfigPath = `./packages/${arg}/vite.config.js`
     if (isFileExist(viteConfigPath)) {
       // 如果业务项目中包含vite.config.js则使用之【主要为了兼容Vue2的业务】
-      await execa(options.command, [options.order, `packages/${arg}`, '--config', `packages/${arg}/vite.config.js`], { stdio: 'inherit' })
+      await execa(
+        options.command,
+        [options.order, `packages/${arg}`, '--config', `packages/${arg}/vite.config.js`],
+        { stdio: 'inherit' }
+      )
     } else {
-      await execa(options.command, [options.order, `packages/${arg}`, ...execaArgs], { stdio: 'inherit' })
+      await execa(options.command, [options.order, `packages/${arg}`, ...execaArgs], {
+        stdio: 'inherit'
+      })
     }
   } catch (err) {
     console.error(err)
@@ -41,20 +47,22 @@ export const run = async (arg, options) => {
 }
 
 const chooseOneRun = async (options) => {
-  const projectList = await getBusinessFolder();
-  inquirer.prompt([
-    {
-      type: 'list',
-      message: `select the business project to execute the ${options.order} command：`,
-      name: 'mono',
-      default: projectList[0],
-      choices: projectList.map(p => p),
-    }
-  ]).then(async ({ mono: projectName }) => {
-    console.log(`> current business project identification：${bold(magentaBright(projectName))}`)
+  const projectList = await getBusinessFolder()
+  inquirer
+    .prompt([
+      {
+        type: 'list',
+        message: `select the business project to execute the ${options.order} command：`,
+        name: 'mono',
+        default: projectList[0],
+        choices: projectList.map((p) => p)
+      }
+    ])
+    .then(async ({ mono: projectName }) => {
+      console.log(`> current business project identification：${bold(magentaBright(projectName))}`)
 
-    await run(projectName, options)
-  })
+      await run(projectName, options)
+    })
 }
 
 export const hasProject = async (name) => {
@@ -70,7 +78,7 @@ export const getBusinessFolder = async () => {
   try {
     const folders = await readdir(fileURLToPath(new URL('../packages', import.meta.url)))
     let businessFolders = []
-    folders.forEach(folder => {
+    folders.forEach((folder) => {
       if (!/^common/.test(folder)) {
         businessFolders.push(folder)
       }
@@ -82,7 +90,7 @@ export const getBusinessFolder = async () => {
 }
 
 export const matchViteArgv = (argv) => {
-  return argv.some(it => /^packages/.test(it))
+  return argv.some((it) => /^packages/.test(it))
 }
 
 export const createVscodeViteAutoConfig = async () => {
@@ -101,7 +109,7 @@ export const isFileExist = (path) => {
   }
 }
 
-export const importViteOptions = async(projectName, command = '') => {
+export const importViteOptions = async (projectName, command = '') => {
   let px2remOptions = {}
   let customPlugins = {}
   let devServer = {}
@@ -115,5 +123,5 @@ export const importViteOptions = async(projectName, command = '') => {
     devServer = await import(serverPath).then((module) => module.default)
   }
 
-  return {customPlugins, px2remOptions, devServer}
+  return { customPlugins, px2remOptions, devServer }
 }

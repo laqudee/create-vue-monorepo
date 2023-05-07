@@ -2,11 +2,11 @@
 
 ## 优先推荐
 
-> 优先推荐作者构建的 `create-vue-business` cli工具包
+> 优先推荐作者构建的 `create-vue-business` cli 工具包
 
 ### 安装与使用
 
-- [CLI工具包github地址](https://github.com/laqudee/create-vue-business)
+- [CLI 工具包 github 地址](https://github.com/laqudee/create-vue-business)
 
 - 安装
 
@@ -21,19 +21,21 @@ create-vue-business
 ```
 
 ## 其他方式说明
+
 ### 1. 创建阶段
 
 > 以`pnpm create vue@latest`为例
 
-1. 在终端切换到`packages`目录下，使用`pnpm create vue@latest`创建一个Vue项目
-2. 由于本项目使用ESLint检查格式，使用Vitest进行单元测试，推荐勾选`eslint`、`prettier`和`vitest`选项
-3. 本项目暂不支持TypeScript、JSX和TSX，故没有相关配置
+1. 在终端切换到`packages`目录下，使用`pnpm create vue@latest`创建一个 Vue 项目
+2. 由于本项目使用 ESLint 检查格式，使用 Vitest 进行单元测试，推荐勾选`eslint`、`prettier`和`vitest`选项
+3. 本项目暂不支持 TypeScript、JSX 和 TSX，故没有相关配置
 
 ### 2. `vue-demo`项目中的修改
 
-> 新的VUE项目我们假设为`vue-demo`
+> 新的 VUE 项目我们假设为`vue-demo`
 
 1. 删除`vue-demo`目录下的如下配置文件：
+
    - `.eslintrc.cjs`
    - `.prettierrc.json`
    - `vite.config.js`
@@ -41,18 +43,22 @@ create-vue-business
    - 原因是：我们在项目最外层（根目录）使用统一的配置和脚本执行命令
 
 2. 在`vue-demo`中的`package.json`中添加：
-  ```json
-    "type": "module",
-  ```
-  - 原因是：整个项目采用esm构建，所以需要在`vue-demo`中指明
+
+```json
+  "type": "module",
+```
+
+- 原因是：整个项目采用 esm 构建，所以需要在`vue-demo`中指明
 
 3. 在`vue-demo`中的`package.json`中，删除`scripts`配置选项：
-  - 原因是：项目采用统一的根目录脚本命令执行，不需要在业务项目中单独配置
+
+- 原因是：项目采用统一的根目录脚本命令执行，不需要在业务项目中单独配置
 
 4. 在`vue-demo`根目录添加`server.js`和`setting.js`文件
-  - `server.js`作为项目根目录`vite.config.js`中的server选项，配置专属开发服务器
-  - `setting.js`作为项目根目录`vite.config.js`中的其他选项配置，例如css选项里的postcss项目
-  - 修改根目录`vite.config.js`中其他配置选项，一定要注意其他业务项目是否正常运行，原则上不允许修改根目录的`vite.cofig.js`中配置
+
+- `server.js`作为项目根目录`vite.config.js`中的 server 选项，配置专属开发服务器
+- `setting.js`作为项目根目录`vite.config.js`中的其他选项配置，例如 css 选项里的 postcss 项目
+- 修改根目录`vite.config.js`中其他配置选项，一定要注意其他业务项目是否正常运行，原则上不允许修改根目录的`vite.cofig.js`中配置
 
 ### 3. 在根目录`vite.config.js`中的修改
 
@@ -60,12 +66,12 @@ create-vue-business
 
 ```js
 return defineConfig({
-    resolve: {
-      alias: {
-        '@one': fileURLToPath(new URL('./packages/vue-demo-one/src', import.meta.url)),
-        '@two': fileURLToPath(new URL('./packages/vue-demo-two/src', import.meta.url))
-      }
-    },
+  resolve: {
+    alias: {
+      '@one': fileURLToPath(new URL('./packages/vue-demo-one/src', import.meta.url)),
+      '@two': fileURLToPath(new URL('./packages/vue-demo-two/src', import.meta.url))
+    }
+  }
 })
 ```
 

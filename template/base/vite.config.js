@@ -19,8 +19,8 @@ if (!matchViteArgv(args)) {
 }
 
 export async function createViteConfig(projectName, command) {
-  const {customPlugins, px2remOptions, devServer } = await importViteOptions(projectName, command)
-  
+  const { customPlugins, px2remOptions, devServer } = await importViteOptions(projectName, command)
+
   return defineConfig({
     root: `./packages/${projectName}/`,
     plugins: [
@@ -31,7 +31,7 @@ export async function createViteConfig(projectName, command) {
       Components({
         resolvers: [...customPlugins.resolvers]
       }),
-      ...customPlugins.othersPlugins,
+      ...customPlugins.othersPlugins
     ],
     resolve: {
       alias: {

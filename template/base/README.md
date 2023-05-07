@@ -4,14 +4,14 @@
   - [技术栈](#技术栈)
   - [`packages`下项目解释](#packages下项目解释)
     - [根目录`package.json`中`scripts`中的命令解释](#根目录packagejson中scripts中的命令解释)
-  - [关于Vue2项目的说明](#关于vue2项目的说明)
-    - [支持Vue2的方式](#支持vue2的方式)
+  - [关于 Vue2 项目的说明](#关于vue2项目的说明)
+    - [支持 Vue2 的方式](#支持vue2的方式)
   - [脚本执行方式说明](#脚本执行方式说明)
     - [使用到的辅助库（包）](#使用到的辅助库包)
     - [脚本执行顺序](#脚本执行顺序)
   - [项目结构说明](#项目结构说明)
   - [项目目录名称规范](#项目目录名称规范)
-  - [创建新VUE业务项目的指南](#创建新vue业务项目的指南)
+  - [创建新 VUE 业务项目的指南](#创建新vue业务项目的指南)
     - [简单的指南](#简单的指南)
   - [自适应设置案例](#自适应设置案例)
   - [解决 VS Code + Vite 插件 自启动时 BUG](#解决-vs-code--vite-插件-自启动时-bug)
@@ -37,12 +37,12 @@
 
 ## `packages`下项目解释
 
-| 项目名称       | 说明                                                                         |
-| :------------- | :--------------------------------------------------------------------------- |
-| common-components   | 存放可以抽离的共用组件，有意做成类 vueuse 方式                               |
-| common-toolbox | 存放供组件库和业务项目使用的公共方法和函数，目标：后期可以抽离成单独的工具库 |
-| business-xx         | 业务项目代码                                                       |
-| ......         | 后期可以直接添加门户相关的其他业务项目                                       |
+| 项目名称          | 说明                                                                         |
+| :---------------- | :--------------------------------------------------------------------------- |
+| common-components | 存放可以抽离的共用组件，有意做成类 vueuse 方式                               |
+| common-library    | 存放供组件库和业务项目使用的公共方法和函数，目标：后期可以抽离成单独的工具库 |
+| business-xx       | 业务项目代码                                                                 |
+| ......            | 后期可以直接添加门户相关的其他业务项目                                       |
 
 ### 根目录`package.json`中`scripts`中的命令解释
 
@@ -54,31 +54,31 @@
    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
    "format": "prettier --write packages/",
    "test": "node ./scripts/test.js",
-   "rollup:build": "pnpm -F ./packages/common-toolbox build"
+   "rollup:build": "pnpm -F ./packages/common-library build"
 },
 ```
 
-| 命令            | 命令示例                                                  | 说明                                                                                                                                         | 完整度 |
-| :-------------- | :-------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- | :----- |
+| 命令            | 命令示例                                                            | 说明                                                                                                                                         | 完整度 |
+| :-------------- | :------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------- | :----- |
 | `dev`           | `pnpm dev business-xx1 business-xx2 ..` 或者直接 `pnpm dev`         | 启动一个或多个 vue 项目的开发服务器，dev 后跟 package 中业务项目名称（非`common-`开头的目录）；直接使用`pnpm dev`将提供可选择的项目用来执行  | 可用   |
 | `build`         | `pnpm build business-xx1 business-xx2 ..` 或者直接 `pnpm build`     | 对一个或多个 vue 项目进行打包，build 后跟 packages 中的业务项目名称（非`common-`开头的目录）；直接使用`pnpm build`将提供可选择的项目用来执行 | 可用   |
 | `preview`       | `pnpm preview business-xx1 business-xx2 ..` 或者直接 `pnpm preview` | 对打包后的 dist 进行预览，preview 后跟 packages 中业务项目名称（非`common-`开头的目录）；直接使用`pnpm preview`将提供可选择的项目用来执行    | 可用   |
-| `lint`          | `pnpm lint`                                               | 对整个项目进行 ESLint 检查，包含所有的工作空间和其他指定格式文件                                                                             | 可用   |
-| `format`        | `pnpm format`                                             | 对 packages 中的项目代码进行格式化                                                                                                           | 可用   |
-| `test`          | `pnpm test business-xx`                                               | 使用 vitest 对项目进行单元测试， 目前支不支持对多个项目进行同时测试，只允许每次测试一个业务项目                                                                                                              | 可用 |
-| `rollup:build ` | `pnpm rollup:build`                                       | 对`common-toolobax`进行 rollup 打包                                                                                                          | 测试中 |
+| `lint`          | `pnpm lint`                                                         | 对整个项目进行 ESLint 检查，包含所有的工作空间和其他指定格式文件                                                                             | 可用   |
+| `format`        | `pnpm format`                                                       | 对 packages 中的项目代码进行格式化                                                                                                           | 可用   |
+| `test`          | `pnpm test business-xx`                                             | 使用 vitest 对项目进行单元测试， 目前支不支持对多个项目进行同时测试，只允许每次测试一个业务项目                                              | 可用   |
+| `rollup:build ` | `pnpm rollup:build`                                                 | 对`common-toolobax`进行 rollup 打包                                                                                                          | 测试中 |
 
 > 后续会随着项目逐渐完善，命令会最终定稿...
 
-## 关于Vue2项目的说明
+## 关于 Vue2 项目的说明
 
-> 原本该脚本生成的`pnpm workspace`是没有计划支持Vue2项目的，但由于一些特殊的业务因为条件的限制只能使用vue2版本。所以在`v0.0.4`版本中支持了Vue2项目
+> 原本该脚本生成的`pnpm workspace`是没有计划支持 Vue2 项目的，但由于一些特殊的业务因为条件的限制只能使用 vue2 版本。所以在`v0.0.4`版本中支持了 Vue2 项目
 
-### 支持Vue2的方式
+### 支持 Vue2 的方式
 
-- 由于原计划`packages`目录下的业务代码均使用统一的外部`vite.config.js`配置，但是Vue2和Vue3项目所依赖的库的版本均不相同，所以无法统一处理
-- 因此对Vue2项目，采用读取其项目内部`vite.config.js`配置的方式来开发、构建
-- 这样，就在一定程度上避免了支持Vue2项目带来的混乱
+- 由于原计划`packages`目录下的业务代码均使用统一的外部`vite.config.js`配置，但是 Vue2 和 Vue3 项目所依赖的库的版本均不相同，所以无法统一处理
+- 因此对 Vue2 项目，采用读取其项目内部`vite.config.js`配置的方式来开发、构建
+- 这样，就在一定程度上避免了支持 Vue2 项目带来的混乱
 
 ## 脚本执行方式说明
 
@@ -117,7 +117,7 @@ $ colorette
 ├─packages                # 工作空间
 │  ├─common-components         # 公共组件存放目录
 │  │
-│  ├─common-toolbox       # 公共工具存放目录
+│  ├─common-library       # 公共工具存放目录
 │  │
 │  └─business-xx               # 业务项目
 │
@@ -134,15 +134,15 @@ $ colorette
 
 > 由于一些脚本的执行可能用到目录名称，所以对目录名称做出一些规范要求
 
-| 所属目录   | 名称规范     | 说明                                                                                   |
-| :--------- | :----------- | :------------------------------------------------------------------------------------- |
-| `packages` | `common-`    | `packages`工作空间中以`common-`开头的项目（目录）均表示公共的模块，不是业务项目        |
-| 业务项目   | `server.js`  | 在业务项目根目录中定义`server.js`，该文件中定义`vite.config.js`可能用到的`server`选项  |
+| 所属目录   | 名称规范              | 说明                                                                                            |
+| :--------- | :-------------------- | :---------------------------------------------------------------------------------------------- |
+| `packages` | `common-`             | `packages`工作空间中以`common-`开头的项目（目录）均表示公共的模块，不是业务项目                 |
+| 业务项目   | `server.js`           | 在业务项目根目录中定义`server.js`，该文件中定义`vite.config.js`可能用到的`server`选项           |
 | 业务项目   | `viteCustomConfig.js` | 在业务项目根目录中定义`viteCustomConfig.js`，该文件中定义`vite.config.js`可能用到的其他选项配置 |
 
-## 创建新VUE业务项目的指南
+## 创建新 VUE 业务项目的指南
 
-> 优先推荐作者写的CLI工具包 [`create-vue-business`](https://github.com/laqudee/create-vue-business)，`create-vue-business `直接生成符合要求的Vue业务项目基本框架
+> 优先推荐作者写的 CLI 工具包 [`create-vue-business`](https://github.com/laqudee/create-vue-business)，`create-vue-business `直接生成符合要求的 Vue 业务项目基本框架
 
 ### [简单的指南](./CREATE-NEW-VUE-PROJECT-README.md)
 
@@ -261,7 +261,7 @@ if (!matchViteArgv(args)) {
 export async function createViteConfig(projectName, command) {
   // ...
   return defineConfig({
-    root: `./packages/${projectName}/`,
+    root: `./packages/${projectName}/`
     // ...
   })
 }
@@ -284,19 +284,19 @@ export const createVscodeViteAutoConfig = async () => {
 
 ## 存在的问题
 
-- [x] ~~`common-toolbox`工具库应尽量只存放项目相关工具函数而不存放 monorepo 相关打包配置工具，方便后期整体抽离~~
-- [x] ~~`axios`工具存放在每个项目中还是集中存放在`common-toolbox`中~~
+- [x] ~~`common-library`工具库应尽量只存放项目相关工具函数而不存放 monorepo 相关打包配置工具，方便后期整体抽离~~
+- [x] ~~`axios`工具存放在每个项目中还是集中存放在`common-library`中~~
 - [x] ~~`scripts`中`dev.js` `build.js` `preview.js`中相同代码过高，考虑抽离~~
 - [x] ~~配置`vite.config.js`将项目打包输出到同一个文件夹，文件夹中输出的 dist 命名为`target/business-xx` `target/other-vuet`~~
 - [x] ~~启用`Eslint`检查~~
 - [x] ~~修复`VS Code`编辑器插件`Vite`自启动，启动服务器失败 BUG~~
-- [x] ~~完善vitest单元测试脚本~~
-- [x] ~~修复vite.config.js中，默认查找`server.js`与`viteCustomConfig.js`的bug，尽管一个正常的业务项目都会配置这些，但很难保证用户不会另辟蹊径！~~
+- [x] ~~完善 vitest 单元测试脚本~~
+- [x] ~~修复 vite.config.js 中，默认查找`server.js`与`viteCustomConfig.js`的 bug，尽管一个正常的业务项目都会配置这些，但很难保证用户不会另辟蹊径！~~
 - [ ] **pnpm 下载依赖 到指定目录研究**【待解决】
 - [ ] _不同项目或库使用统一脚本入口执行打包的可行性 【待研究】_
-- [ ] 一个业务项目有server.js一个项目没有server.js，启动有问题
-- [ ] 在esm项目中使用cjs包的问题
-  - 考虑使用`import commonjs from '@rollup/plugin-commonjs'`将cjs包转为esm模式来使用
+- [ ] 一个业务项目有 server.js 一个项目没有 server.js，启动有问题
+- [ ] 在 esm 项目中使用 cjs 包的问题
+  - 考虑使用`import commonjs from '@rollup/plugin-commonjs'`将 cjs 包转为 esm 模式来使用
 
 ## 引入`TypeScript`的可行性
 
