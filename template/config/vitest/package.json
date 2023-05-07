@@ -1,11 +1,11 @@
 {
-    "scripts": {
-        "test": "node ./scripts/test.js"
-    },
-    "devDependencies": {
-        "vue": "^3.2.47",
-        "@vue/test-utils": "^2.3.0",
-        "jsdom": "^21.1.0",
-        "vitest": "^0.29.1"
-      }
+  "scripts": {
+    "test": "node ./scripts/test.js"
+  },
+  "devDependencies": {
+    "vue": "^3.2.47",
+    "@vue/test-utils": "^2.3.0",
+    "jsdom": "^21.1.0",
+    "vitest": "^0.29.1"
+  }
 }

@@ -5,7 +5,7 @@ const args = process.argv.slice(2)
 
 const commandOptions = {
   command: 'vite',
-  order: 'serve',
+  order: 'serve'
 }
 
 commandRunner(args, commandOptions)

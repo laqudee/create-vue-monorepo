@@ -7,12 +7,14 @@ const arg = process.argv.slice(2)
 
 const options = {
   command: 'vitest',
-  order: 'dev',
+  order: 'dev'
 }
 
 function run() {
   if (arg && arg.length !== 0) {
-    execa(options.command, [options.order, `packages/${arg[0]}`, ...execaArgs], { stdio: 'inherit' })
+    execa(options.command, [options.order, `packages/${arg[0]}`, ...execaArgs], {
+      stdio: 'inherit'
+    })
   } else {
     throw new Error('no business project name')
   }

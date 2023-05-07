@@ -1,4 +1,4 @@
-/*! create-vue-monorepo v0.0.5 | MIT */
+/*! create-vue-monorepo v0.0.6 | MIT */
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -3854,7 +3854,9 @@ Scaffolding project in ${root}...`);
   console.log(`
 Done. Now run:
 `);
-  console.log(`  ${bold(green(`Please use pnpm as the package management tool for the workspace project`))}`);
+  console.log(
+    `  ${bold(green(`Please use pnpm as the package management tool for the workspace project`))}`
+  );
   if (root !== cwd) {
     const cdProjectName = path4.relative(cwd, root);
     console.log(

@@ -188,7 +188,7 @@ async function init() {
     needsVitest = argv.vitest || argv.tests,
     needsEslint = argv.eslint || argv['eslint-with-prettier'],
     needsPrettier = argv['eslint-with-prettier'],
-    needsCommonLib = argv.commonlib,
+    needsCommonLib = argv.commonlib
   } = result
 
   const root = path.join(cwd, targetDir)
@@ -256,9 +256,10 @@ async function init() {
   // Supported package managers: pnpm > yarn > npm
   const packageManager = 'pnpm'
 
-
   console.log(`\nDone. Now run:\n`)
-  console.log(`  ${bold(green(`Please use pnpm as the package management tool for the workspace project`))}`)
+  console.log(
+    `  ${bold(green(`Please use pnpm as the package management tool for the workspace project`))}`
+  )
   if (root !== cwd) {
     const cdProjectName = path.relative(cwd, root)
     console.log(

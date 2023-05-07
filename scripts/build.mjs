@@ -54,7 +54,9 @@ await esbuild.build({
           file: 'LICENSE',
           template(allDependencies) {
             // There's a bug in the plugin that it also includes the `create-vue-monorepo` package itself
-            const dependencies = allDependencies.filter((d) => d.packageJson.name !== 'create-vue-monorepo')
+            const dependencies = allDependencies.filter(
+              (d) => d.packageJson.name !== 'create-vue-monorepo'
+            )
             const licenseText =
               `# create-vue-monorepo core license\n\n` +
               `create-vue-monorepo is released under the MIT license:\n\n` +
