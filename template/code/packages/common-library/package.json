@@ -1,5 +1,5 @@
 {
-  "name": "common-toolbox",
+  "name": "common-library",
   "version": "1.0.0",
   "description": "",
   "module": "src/index.js",
