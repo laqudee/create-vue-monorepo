@@ -1,4 +1,4 @@
-/*! create-vue-monorepo v0.0.6 | MIT */
+/*! create-vue-monorepo v0.1.0 | MIT */
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -3790,7 +3790,7 @@ async function init() {
         {
           name: "needsCommonLib",
           type: () => isFeatureFlagsUsed ? null : "toggle",
-          message: "Add Common toolbox lib for project?",
+          message: "Add common util library(common-library) for project?",
           initial: false,
           active: "Yes",
           inactive: "No"

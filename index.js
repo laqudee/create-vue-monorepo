@@ -162,7 +162,7 @@ async function init() {
         {
           name: 'needsCommonLib',
           type: () => (isFeatureFlagsUsed ? null : 'toggle'),
-          message: 'Add Common toolbox lib for project?',
+          message: 'Add common util library(common-library) for project?',
           initial: false,
           active: 'Yes',
           inactive: 'No'

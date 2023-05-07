@@ -40,7 +40,7 @@
 | 项目名称          | 说明                                                                         |
 | :---------------- | :--------------------------------------------------------------------------- |
 | common-components | 存放可以抽离的共用组件，有意做成类 vueuse 方式                               |
-| common-toolbox    | 存放供组件库和业务项目使用的公共方法和函数，目标：后期可以抽离成单独的工具库 |
+| common-library    | 存放供组件库和业务项目使用的公共方法和函数，目标：后期可以抽离成单独的工具库 |
 | business-xx       | 业务项目代码                                                                 |
 | ......            | 后期可以直接添加门户相关的其他业务项目                                       |
 
@@ -54,7 +54,7 @@
    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
    "format": "prettier --write packages/",
    "test": "node ./scripts/test.js",
-   "rollup:build": "pnpm -F ./packages/common-toolbox build"
+   "rollup:build": "pnpm -F ./packages/common-library build"
 },
 ```
 
@@ -117,7 +117,7 @@ $ colorette
 ├─packages                # 工作空间
 │  ├─common-components         # 公共组件存放目录
 │  │
-│  ├─common-toolbox       # 公共工具存放目录
+│  ├─common-library       # 公共工具存放目录
 │  │
 │  └─business-xx               # 业务项目
 │
@@ -284,8 +284,8 @@ export const createVscodeViteAutoConfig = async () => {
 
 ## 存在的问题
 
-- [x] ~~`common-toolbox`工具库应尽量只存放项目相关工具函数而不存放 monorepo 相关打包配置工具，方便后期整体抽离~~
-- [x] ~~`axios`工具存放在每个项目中还是集中存放在`common-toolbox`中~~
+- [x] ~~`common-library`工具库应尽量只存放项目相关工具函数而不存放 monorepo 相关打包配置工具，方便后期整体抽离~~
+- [x] ~~`axios`工具存放在每个项目中还是集中存放在`common-library`中~~
 - [x] ~~`scripts`中`dev.js` `build.js` `preview.js`中相同代码过高，考虑抽离~~
 - [x] ~~配置`vite.config.js`将项目打包输出到同一个文件夹，文件夹中输出的 dist 命名为`target/business-xx` `target/other-vuet`~~
 - [x] ~~启用`Eslint`检查~~
