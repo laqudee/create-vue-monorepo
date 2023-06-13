@@ -19,6 +19,6 @@
     "qs": "^6.10.5",
     "rollup": "^3.18.0",
     "lodash": "^4.17.21",
-    "common-toolbox": "^0.0.9"
+    "common-toolbox": "^0.0.10"
   }
 }
