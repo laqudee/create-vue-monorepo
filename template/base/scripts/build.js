@@ -15,7 +15,7 @@ args.forEach((arg, index) => {
 const commandOptions = {
   command: 'vite',
   order: 'build',
-  mode: mode ? mode : 'production',
+  mode: mode ? mode : 'production'
 }
 
 commandRunner(args, commandOptions)

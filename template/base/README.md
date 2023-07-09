@@ -83,8 +83,8 @@
 - 针对可能出现的多种部署环境例如，正式环境（production）、测试环境（staging）、其他环境。对`pnpm build`命令进行优化，优化内容如下：
   - 引入`--mode`参数，在使用`pnpm build`命令时指出构建何种环境下的包
   - 使用 `--mode`时请确认配置了响应的`.env.[modename]`文件
-  - 开发环境，mode默认指定为`development`
-    - 如有其他开发环境需求，可自定义mode
+  - 开发环境，mode 默认指定为`development`
+    - 如有其他开发环境需求，可自定义 mode
     - `pnpm dev`，默认启动的开发环境
     - `pnpm dev --mode=devModeName`，根据`.env.[devModeName]`文件名称启动指定的开发环境
   - 构建生产包使用示例
