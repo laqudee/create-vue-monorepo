@@ -4,6 +4,7 @@
   - [技术栈](#技术栈)
   - [`packages`下项目解释](#packages下项目解释)
     - [根目录`package.json`中`scripts`中的命令解释](#根目录packagejson中scripts中的命令解释)
+      - [环境变量与模式](#环境变量与模式)
   - [关于 Vue2 项目的说明](#关于-vue2-项目的说明)
     - [支持 Vue2 的方式](#支持-vue2-的方式)
   - [脚本执行方式说明](#脚本执行方式说明)
@@ -67,6 +68,31 @@
 | `format`        | `pnpm format`                                                       | 对 packages 中的项目代码进行格式化                                                                                                           | 可用   |
 | `test`          | `pnpm test business-xx`                                             | 使用 vitest 对项目进行单元测试， 目前支不支持对多个项目进行同时测试，只允许每次测试一个业务项目                                              | 可用   |
 | `rollup:build ` | `pnpm rollup:build`                                                 | 对`common-toolobax`进行 rollup 打包                                                                                                          | 测试中 |
+
+| 命令 （带`--mode`参数）                                   | 说明                                                                | 完整度 |
+| :-------------------------------------------------------- | :------------------------------------------------------------------ | :----- |
+| `pnpm dev`                                                | 默认启动的开发环境                                                  | 可用   |
+| `pnpm dev --mode=devModeName`                             | 根据`.env.[devModeName]`文件名称启动指定的开发环境                  | 可用   |
+| `pnpm build`                                              | 默认构建正式环境的包                                                | 可用   |
+| `pnpm build --mode=production`                            | 以显式指出的方式，构建正式环境的包                                  | 可用   |
+| `pnpm build --mode=staging`                               | 根据`.env.[modeName]`文件名称构建相应`modeName`环境的包             | 可用   |
+| `pnpm build business-xx1 business-xx2 .. --mode=modeName` | 根据`.env.[modeName]`名称构建相应选择的业务项目的`modeName`环境的包 | 可用   |
+
+#### 环境变量与模式
+
+- 针对可能出现的多种部署环境例如，正式环境（production）、测试环境（staging）、其他环境。对`pnpm build`命令进行优化，优化内容如下：
+  - 引入`--mode`参数，在使用`pnpm build`命令时指出构建何种环境下的包
+  - 使用 `--mode`时请确认配置了响应的`.env.[modename]`文件
+  - 开发环境，mode默认指定为`development`
+    - 如有其他开发环境需求，可自定义mode
+    - `pnpm dev`，默认启动的开发环境
+    - `pnpm dev --mode=devModeName`，根据`.env.[devModeName]`文件名称启动指定的开发环境
+  - 构建生产包使用示例
+    - `pnpm build`，默认构建正式环境的包
+    - `pnpm build --mode=production`，以显式指出的方式，构建正式环境的包
+    - `pnpm build --mode=staging`，以显式指出的方式，构建预发布（测试环境）的包
+    - `pnpm build --mode=modeName`，根据`.env.[modeName]`文件名称构建相应`modeName`环境的包
+    - `pnpm build business-xx1 business-xx2 .. --mode=modeName`，根据`.env.[modeName]`名称构建相应选择的业务项目的`modeName`环境的包
 
 > 后续会随着项目逐渐完善，命令会最终定稿...
 

@@ -21,6 +21,7 @@ export const commandRunner = (args, options) => {
 
 export const run = async (arg, options) => {
   try {
+    console.log(`> current vite build mode identification：${bold(magentaBright(options.mode))}`)
     console.log('> starting...')
     if (!arg) {
       throw new Error('no business project name')
@@ -31,15 +32,9 @@ export const run = async (arg, options) => {
     const viteConfigPath = `./packages/${arg}/vite.config.js`
     if (isFileExist(viteConfigPath)) {
       // 如果业务项目中包含vite.config.js则使用之【主要为了兼容Vue2的业务】
-      await execa(
-        options.command,
-        [options.order, `packages/${arg}`, '--config', `packages/${arg}/vite.config.js`],
-        { stdio: 'inherit' }
-      )
+      await execa(options.command, [options.order, `packages/${arg}`, '--config', `packages/${arg}/vite.config.js`, '--mode', options.mode], { stdio: 'inherit' })
     } else {
-      await execa(options.command, [options.order, `packages/${arg}`, ...execaArgs], {
-        stdio: 'inherit'
-      })
+      await execa(options.command, [options.order, `packages/${arg}`, ...execaArgs, '--mode', options.mode], { stdio: 'inherit' })
     }
   } catch (err) {
     console.error(err)
